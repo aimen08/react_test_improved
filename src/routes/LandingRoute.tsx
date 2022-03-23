@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
+import Logo from "../assets/logo.svg";
 
 function LandingRoute() {
   return (
-    <div>LandingRoute</div>
-  )
+    <div>Landing Page</div>
+  );
 }
-
-export default LandingRoute
+export default LandingRoute;
