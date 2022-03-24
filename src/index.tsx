@@ -5,16 +5,22 @@ import "flowbite";
 import reportWebVitals from "./reportWebVitals";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { LandingRoute, PostCheckoutRoute, SearchResultRoute } from "./routes";
+import model from "./store";
+import { createStore, StoreProvider } from "easy-peasy";
+
+const store = createStore(model);
 
 const rootElement = document.getElementById("root");
 render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingRoute />} />
-        <Route path="/result" element={<PostCheckoutRoute />} />
-        <Route path="/post" element={<SearchResultRoute />} />
-      </Routes>
+      <StoreProvider store={store}>
+        <Routes>
+          <Route path="/" element={<LandingRoute />} />
+          <Route path="/result" element={<PostCheckoutRoute />} />
+          <Route path="/post" element={<SearchResultRoute />} />
+        </Routes>
+      </StoreProvider>
     </BrowserRouter>
   </React.StrictMode>,
   rootElement
