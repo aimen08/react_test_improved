@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
+import { useParams } from "react-router-dom";
 
 function SearchResultRoute() {
-  return (
-    <div>SearchResultRoute</div>
-  )
+  const params = useParams();
+  return <div>{params.term}</div>;
 }
 
-export default SearchResultRoute
+export default SearchResultRoute;

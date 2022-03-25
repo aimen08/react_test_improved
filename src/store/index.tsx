@@ -1,30 +1,17 @@
-import axios from "axios";
-import { Action, action, thunk, Thunk } from "easy-peasy";
-import { Song, Response } from "../models/response";
-
-const API_URL = "https://itunes.apple.com/search?term=";
+import { createStore } from "easy-peasy";
+import { cart, CartModel } from "./cart.model";
+import { SongModel, songs } from "./songs.model";
 
 export interface StoreModel {
-  songs: {
-    items: Song[];
-    addSong: Action<StoreModel, Song[]>;
-    request: Thunk<StoreModel, any>;
-  };
+  songs: SongModel;
+  cart: CartModel;
 }
 
-const model: StoreModel = {
-  songs: {
-    items: [],
-    addSong: action((state, payload) => {
-      state.songs.items.push(...payload);
-      console.log(state.songs.items);
-    }),
-    request: thunk(async (actions, payload) => {
-      const result = await axios.get<Response>(`${API_URL}${payload}`);
-      const songs = result.data.results;
-      actions.songs.addSong(songs);
-    }),
-  },
+const model = {
+  songs: songs,
+  cart: cart,
 };
 
-export default model;
+const store = createStore(model, { devTools: true });
+
+export default store;
