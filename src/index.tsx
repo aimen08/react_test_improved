@@ -1,7 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
 import "./index.css";
-import "flowbite";
 import reportWebVitals from "./reportWebVitals";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { LandingRoute, PostCheckoutRoute, SearchResultRoute } from "./routes";
